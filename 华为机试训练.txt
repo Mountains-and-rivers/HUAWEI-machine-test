@@ -291,47 +291,46 @@ const startTest = async () => {
 }
 startTest()
 
+
 /*
+
 题目描述
-功能:输入一个正整数，按照从小到大的顺序输出它的所有质数的因子（如180的质数因子为2 2 3 3 5 ）
-最后一个数后面也要有空格
-详细描述：
-函数接口说明：
-public String getResult(long ulDataInput)
-输入参数：
-long ulDataInput：输入的正整数
-返回值：
-String
+写出一个程序，接受一个正浮点数值，输出该数值的近似整数值。如果小数点后数值大于等于5,向上取整；小于5，则向下取整。
 输入描述:
-输入一个long型整数
+输入一个正浮点数值
 输出描述:
-按照从小到大的顺序输出它的所有质数的因子，以空格隔开。最后一个数后面也要有空格。
-*/
-const readLine = require('readline')
-const rl = readLine.createInterface({
-    input: process.stdin,
-    output: process.stdout
-})
+输出该数值的近似整数值
+
+* */
+const readline = require('readline')
+const rl = readline.createInterface(
+    {
+        input:process.stdin,
+        output:process.stdout
+    }
+)
+
 const getLine = (function () {
-    const getLineGen = (async function* () {
+    const getLineGen = (async function* (){
         for await (const line of rl) {
             yield line;
         }
     })()
-    return async () => ((await getLineGen.next()).value)
+    return async ()=> ((await getLineGen.next()).value)
 })()
 
-const startTest = async () => {
-    for (; ;) {
-        var num1 = await getLine();
-        var t = parseInt(num1);
-        var p = num1 - t;
-        if (p >= 0.5) {
-            t += 1
+const startTest = async ()=> {
+    for(;;) {
+        let num1 = await getLine();
+        var t=parseInt(num1);
+        var p=num1-t;
+        if(p>=0.5){
+            t+=1
         }
         console.log(t);
     }
 }
+
 startTest()
 
 /*
